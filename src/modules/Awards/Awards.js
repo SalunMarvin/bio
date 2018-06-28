@@ -12,6 +12,22 @@ export class Awards extends React.Component {
     this.bioController = props.BioController
   }
 
+  renderCards() {
+    let cardsDOM = this.bioController && this.bioController.awards
+
+    return cardsDOM.map((card, index) => {
+      return (
+        <Card
+          key={'award_card_' + index}
+          title={card.name}
+          description={card.contributions}
+          recommendations={card.recommendations}
+          organizations={card.organizations || []}
+        />
+      )
+    })
+  }
+
   render() {
     return (
       <section className='bioAboutSession'>
@@ -25,7 +41,7 @@ export class Awards extends React.Component {
           </div>
           <div className='row'>
             <div className='col-md-12'>
-              <Card />
+            { this.bioController.awards && this.renderCards() }
             </div>
           </div>
         </div>

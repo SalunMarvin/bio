@@ -12,7 +12,7 @@ export class BioHeader extends React.Component {
   }
 
   componentDidMount() {
-    this.bioController.loadProfileFromBio()
+    this.bioController.loadProfileFromBio('torrenegra')
   }
 
   render() {
@@ -30,18 +30,18 @@ export class BioHeader extends React.Component {
                 </p>
                 <p>
                 <span className='headerPosition'>
-                  Full-stack Engineer
+                { this.bioController.profile && this.bioController.profile.professionalHeadline }
                 </span>
                   </p>
                   <p>
                 <span className='headerCity'>
-                  Blumenau, Brazil
+                { this.bioController.profile && this.bioController.profile.location }
                 </span>
                 </p>
               </div>
             </div>
             <div className='col-md-3'>
-              <img className='headerAvatar' src='https://starrgate.s3.amazonaws.com:443/users/c17497b571687f18057609540ac1fcf3a154802e/profile_DtvUrjv.jpg' alt='Avatar' />
+              <img className='headerAvatar' src={this.bioController.profile && this.bioController.profile.avatar} alt='Avatar' />
             </div>
           </div>
           <div className='row'>

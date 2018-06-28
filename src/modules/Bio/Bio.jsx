@@ -3,8 +3,9 @@ import { Provider } from 'mobx-react'
 import { BioController } from './BioController'
 import './Bio.scss'
 
+import { BioMenu } from '../BioMenu/BioMenu' 
 import { BioHeader } from '../BioHeader/BioHeader'
-import { BioRecommendations } from '../BioRecommendations/BioRecommendations'
+import { Recommendations } from '../Recommendations/Recommendations'
 import { About } from '../About/About'
 import { Awards } from '../Awards/Awards'
 import { Jobs } from '../Jobs/Jobs'
@@ -20,8 +21,9 @@ export default class Bio extends Component {
     return (
       <Provider BioController={this.bioController}>
         <div>
+          <BioMenu {...this.props} />
           <BioHeader {...this.props} />
-          <BioRecommendations {...this.props} />
+          <Recommendations {...this.props} />
           <About {...this.props} />
           <Awards {...this.props} />
           <Jobs {...this.props} />

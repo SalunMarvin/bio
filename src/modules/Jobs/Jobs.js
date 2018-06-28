@@ -12,6 +12,28 @@ export class Jobs extends React.Component {
     this.bioController = props.BioController
   }
 
+  renderCards() {
+    let cardsDOM = this.bioController && this.bioController.jobs
+
+    return cardsDOM.map((card, index) => {
+      let description = null
+      let name = null
+    
+      card.contributions ? description = card.contributions : description = card.additionalInfo
+      card.role ? name = card.role : name = card.name
+        
+      return (
+        <Card
+          key={'award_card_' + index}
+          title={name}
+          description={description}
+          recommendations={card.recommendations}
+          organizations={card.organizations || []}
+        />
+      )
+    })
+  }
+
   render() {
     return (
       <section className='bioAboutSession'>
@@ -25,7 +47,7 @@ export class Jobs extends React.Component {
           </div>
           <div className='row'>
             <div className='col-md-12'>
-              <Card />
+            { this.bioController.jobs && this.renderCards() }
             </div>
           </div>
         </div>

@@ -13,8 +13,8 @@ export class Skill extends React.Component {
 
   render() {
     return (
-      <div style={{ float: 'left' }}>
-          <span className="badge badge-pill badge-secondary">JavaScript (60,9)</span>
+      <div className='skillBadge' key={'div-skill' + this.props.name}>
+          <span className="badge badge-pill badge-secondary">{this.props.name} ({this.props.weight})</span>
       </div>
     )
   }

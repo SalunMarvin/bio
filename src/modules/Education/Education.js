@@ -12,6 +12,26 @@ export class Education extends React.Component {
     this.bioController = props.BioController
   }
 
+  renderCards() {
+    let cardsDOM = this.bioController && this.bioController.education
+
+    return cardsDOM.map((card, index) => {
+      let description = null
+    
+      card.contributions ? description = card.contributions : description = card.additionalInfo
+        
+      return (
+        <Card
+          key={'award_card_' + index}
+          title={card.name}
+          description={description}
+          recommendations={card.recommendations}
+          organizations={card.organizations || []}
+        />
+      )
+    })
+  }
+
   render() {
     return (
       <section className='bioAboutSession'>
@@ -25,7 +45,7 @@ export class Education extends React.Component {
           </div>
           <div className='row'>
             <div className='col-md-12'>
-              <Card />
+            { this.bioController.education && this.renderCards() }
             </div>
           </div>
         </div>
