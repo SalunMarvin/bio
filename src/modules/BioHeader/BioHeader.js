@@ -12,7 +12,7 @@ export class BioHeader extends React.Component {
   }
 
   componentDidMount() {
-    this.bioController.loadProfileFromBio('torrenegra')
+    //this.bioController.loadProfileFromBio('torrenegra')
   }
 
   render() {

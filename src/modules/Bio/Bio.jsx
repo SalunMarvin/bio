@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Provider } from 'mobx-react'
+import { inject, observer, Provider } from 'mobx-react'
 import { BioController } from './BioController'
 import './Bio.scss'
 
@@ -10,7 +10,9 @@ import { About } from '../About/About'
 import { Awards } from '../Awards/Awards'
 import { Jobs } from '../Jobs/Jobs'
 import { Education } from '../Education/Education'
+import { LoadData } from '../LoadData/LoadData'
 
+@observer
 export default class Bio extends Component {
   constructor(props) {
     super(props)
@@ -22,12 +24,13 @@ export default class Bio extends Component {
       <Provider BioController={this.bioController}>
         <div>
           <BioMenu {...this.props} />
-          <BioHeader {...this.props} />
-          <Recommendations {...this.props} />
-          <About {...this.props} />
-          <Awards {...this.props} />
-          <Jobs {...this.props} />
-          <Education {...this.props} />
+          {this.bioController.loaded && <BioHeader {...this.props} />}
+          {this.bioController.loaded && <Recommendations {...this.props} />}
+          {this.bioController.loaded && <About {...this.props} />}
+          {this.bioController.loaded && <Awards {...this.props} />}
+          {this.bioController.loaded && <Jobs {...this.props} />}
+          {this.bioController.loaded && <Education {...this.props} />}
+          {!this.bioController.loaded && <LoadData />}
         </div>
       </Provider>
     )

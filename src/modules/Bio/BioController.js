@@ -2,6 +2,7 @@ import { observable, action } from 'mobx'
 import axios from 'axios'
 
 export class BioController {
+  @observable loaded = false
   @observable profile = {}
   @observable strengths = []
   @observable awards = []
@@ -29,6 +30,8 @@ export class BioController {
         this.projects = response.data.projects
         this.publications = response.data.publications
         this.education = response.data.education
+
+        this.loaded = true
       });
   }
 }
