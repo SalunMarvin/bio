@@ -11,6 +11,10 @@ export class BioHeader extends React.Component {
     this.bioController = props.BioController
   }
 
+  componentDidMount() {
+    this.bioController.loadProfileFromBio()
+  }
+
   render() {
     return (
       <section className='bioHeaderSection'>
@@ -21,7 +25,7 @@ export class BioHeader extends React.Component {
               <div>
                 <p>
                 <span className='headerName'>
-                  my name is Salun Marvin
+                  my name is { this.bioController.profile && this.bioController.profile.name }
                 </span>
                 </p>
                 <p>

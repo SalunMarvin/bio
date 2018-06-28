@@ -20,8 +20,11 @@ export class About extends React.Component {
             <div className='col-md-12'>
               <div style={{ textAlign: 'center' }}>
                 <p><span className='sectionTitle'>About</span></p>
-                <p><span className='recommendationWeight'>170 <i className='material-icons'>poll</i></span>
-                <br /><span className='recommendationWeightDetails'>total recommendation weight</span></p>
+
+                <p>I'm a passionate developer and project manager. I have experience in a broad range of
+                  technologies in both backend and frontend, plus leadership and people management acknowledge.
+                  I'm currently looking for an opportunity to improve my
+                  skills, get some new challenges and learn with closer friends and colleagues.</p>
               </div>
             </div>
           </div>
