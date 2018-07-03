@@ -11,6 +11,7 @@ import { Awards } from '../Awards/Awards'
 import { Jobs } from '../Jobs/Jobs'
 import { Education } from '../Education/Education'
 import { LoadData } from '../LoadData/LoadData'
+import { Merge } from '../Merge/Merge'
 
 @observer
 export default class Bio extends Component {
@@ -30,7 +31,8 @@ export default class Bio extends Component {
           {this.bioController.loaded && <Awards {...this.props} />}
           {this.bioController.loaded && <Jobs {...this.props} />}
           {this.bioController.loaded && <Education {...this.props} />}
-          {!this.bioController.loaded && <LoadData />}
+          {!this.bioController.loaded && !this.bioController.merging && <LoadData />}
+          {this.bioController.merging && <Merge />}
         </div>
       </Provider>
     )

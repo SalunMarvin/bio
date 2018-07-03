@@ -11,10 +11,6 @@ export class BioHeader extends React.Component {
     this.bioController = props.BioController
   }
 
-  componentDidMount() {
-    //this.bioController.loadProfileFromBio('torrenegra')
-  }
-
   render() {
     return (
       <section className='bioHeaderSection'>

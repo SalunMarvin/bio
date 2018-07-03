@@ -3,6 +3,7 @@ import axios from 'axios'
 
 export class BioController {
   @observable loaded = false
+  @observable merging = false
   @observable profile = {}
   @observable strengths = []
   @observable awards = []
@@ -10,6 +11,20 @@ export class BioController {
   @observable projects = []
   @observable publications = []
   @observable education = []
+  @observable inProfile = [
+    { sectionName: 'About', sectionCategory: 'Torre Bio', id: 'aboutbio' },
+    { sectionName: 'Jobs', sectionCategory: 'Torre Bio', id: 'jobsbio' },
+    { sectionName: 'Education', sectionCategory: 'Torre Bio', id: 'educationbio' },
+    { sectionName: 'Skills', sectionCategory: 'Torre Bio', id: 'skillsbio' },
+    { sectionName: 'Recommendations', sectionCategory: 'Torre Bio', id:'recommendationsbio' },
+  ]
+  @observable notInProfile = [
+    { sectionName: 'Jobs', sectionCategory: 'LinkedIn', id: 'jobslinkedin' },
+    { sectionName: 'Education', sectionCategory: 'LinkedIn', id: 'educationlinkedin' },
+    { sectionName: 'Skills', sectionCategory: 'LinkedIn', id: 'skillslinkedin' },
+    { sectionName: 'About', sectionCategory: 'LinkedIn', id: 'aboutlinkedin' },
+    
+  ]
 
   @action loadProfileFromBio = (id) => {
     axios.post('http://127.0.0.1:8083/get-bio/', { personId: id})

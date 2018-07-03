@@ -1,16 +1,28 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { observable } from 'mobx'
+import socketIOClient from "socket.io-client";
 import './BioMenu.scss'
 
 @inject('BioController')
 @observer
 export class BioMenu extends React.Component {
   @observable personId = ''
+  socket = socketIOClient('http://localhost:8083');
 
   constructor(props) {
     super(props)
     this.bioController = props.BioController
+  }
+
+  componentDidMount() {
+    this.activateWebSocket()
+  }
+
+  activateWebSocket = () => {
+    this.socket.on("profile", data => {
+      console.log('Websocket loading LinkedIn data')
+    })
   }
 
   handleInputChange = (event) => {
@@ -24,10 +36,13 @@ export class BioMenu extends React.Component {
     this.bioController.loadProfileFromBio(id)
   }
 
-  integrateLinkedIn = () => {
-    let authurl = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78rknub4ani6mz&redirect_uri=http%3A%2F%2Flocalhost%3A8083%2Fauth&state=2522abcde12345&scope=r_basicprofile"
+  integrateLinkedIn() {
+    //let authurl = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78rknub4ani6mz&redirect_uri=http%3A%2F%2Flocalhost%3A8083%2Fauth&state=DCEeFWf45A53sdfKef424&scope=r_basicprofile'
 
-    window.location.href = authurl
+    // window.open(authurl, '_blank')
+
+    this.bioController.merging = true
+    this.bioController.loaded = false
   }
 
   render() {
