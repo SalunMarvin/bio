@@ -8,7 +8,7 @@ import './BioMenu.scss'
 @observer
 export class BioMenu extends React.Component {
   @observable personId = ''
-  socket = socketIOClient('http://localhost:8083');
+  socket = socketIOClient('https://torrebio-backend.herokuapp.com');
 
   constructor(props) {
     super(props)
