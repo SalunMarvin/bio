@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --hot --open",
-    "build": "webpack-dev-server"
+    "build": "webpack"
   },
   "author": "Salun Marvin"
 }
