@@ -33,8 +33,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --hot --open",
-    "build": "webpack-dev-server",
-    "heroku-postbuild": "webpack -p"
+    "build": "webpack-dev-server"
   },
   "author": "Salun Marvin"
 }
