@@ -27,7 +27,7 @@ export class BioController {
   ]
 
   @action loadProfileFromBio = (id) => {
-    axios.post('http://127.0.0.1:8083/get-bio/', { personId: id})
+    axios.post('https://torrebio-backend.herokuapp.com/get-bio/', { personId: id})
       .then(response => {
         this.profile = {
           name: response.data.person.name,
